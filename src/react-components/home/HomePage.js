@@ -4,6 +4,7 @@ import classNames from "classnames";
 import configs from "../../utils/configs";
 import IfFeature from "../if-feature";
 import { Page } from "../layout/Page";
+import { HomePageDialog } from "./HomePageDialog";
 import { CreateRoomButton } from "./CreateRoomButton";
 import { PWAButton } from "./PWAButton";
 import { useFavoriteRooms } from "./useFavoriteRooms";
@@ -129,6 +130,7 @@ export function HomePage() {
           </div>
         </div>
       </section>
+      <HomePageDialog />
     </Page>
   );
 }
