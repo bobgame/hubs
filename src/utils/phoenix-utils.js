@@ -217,8 +217,10 @@ export async function createAndRedirectToNewHub(name, sceneId, replace) {
   }
 
   if (isLocalClient()) {
-    url = `/hub.html?hub_id=${hub.hub_id}`;
+    // url = `/hub.html?hub_id=${hub.hub_id}`;
+    url = `/hub.html?hub_id=E9gwNaF`;
   }
+  // url = `/hub.html?hub_id=E9gwNaF`;
 
   if (replace) {
     document.location.replace(url);

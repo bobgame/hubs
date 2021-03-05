@@ -6,6 +6,8 @@ import { FormattedMessage } from "react-intl";
 import { WrappedIntlProvider } from "./wrapped-intl-provider";
 import screenfull from "screenfull";
 
+import { HomePageDialog } from "./home/HomePageDialog";
+
 import configs from "../utils/configs";
 import IfFeature from "./if-feature";
 import UnlessFeature from "./unless-feature";
@@ -2191,6 +2193,7 @@ class UIRoot extends Component {
             )}
           </div>
         </WrappedIntlProvider>
+        <HomePageDialog />
       </ReactAudioContext.Provider>
     );
   }

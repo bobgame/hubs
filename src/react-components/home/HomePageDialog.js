@@ -5,6 +5,7 @@ import work from "../../assets/user/work.jpg";
 import learn from "../../assets/user/learn.jpg";
 import basics from "../../assets/user/basics.jpg";
 import "./HomePageDialog.scss";
+import "./HomePageFrame.scss";
 
 const chooseOptions = [
   { img: create, name: "Create", desc: "Great for editing photos or videos and have a digital pen." },
@@ -22,12 +23,12 @@ const chooseOptions = [
   }
 ];
 
+const frameUrl = "https://www.baidu.com";
+const buyUrl = "https://www.lenovo.com/us/en/laptops/thinkpad/thinkpad-x1/X1-Titanium-G1/p/22TP2X1X1T1";
+
 export function HomePageDialog() {
   const [showDialog, setShowDialog] = useState(false);
-
-  useEffect(() => {
-    // const qs = new URLSearchParams(location.search);
-  }, []);
+  const [showFrame, setShowFrame] = useState(false);
 
   const openDialog = () => {
     setShowDialog(true);
@@ -35,6 +36,31 @@ export function HomePageDialog() {
   const closeDialog = () => {
     setShowDialog(false);
   };
+  const openFrame = () => {
+    setShowFrame(true);
+  };
+  const closeFrame = () => {
+    setShowFrame(false);
+  };
+
+  useEffect(() => {
+    document.onkeydown = function(e) {
+      const keyCode = e.keyCode || e.which || e.charCode;
+      // const altKey = e.altKey;
+      if (keyCode == 80) {
+        // i 73
+        openDialog();
+      } else if (keyCode == 73) {
+        openFrame();
+      } else if (keyCode == 89) {
+        window.open(frameUrl, "_blank");
+      } else if (keyCode == 66) {
+        window.open(buyUrl, "_blank");
+      }
+      e.preventDefault();
+      return false;
+    };
+  }, []);
 
   return (
     <>
@@ -72,9 +98,20 @@ export function HomePageDialog() {
           </div>
         </div>
       )}
-      <div className="show-home-page-btn" onClick={openDialog}>
+      {showFrame && (
+        <div className="home-frame-dialog">
+          <div className="top">
+            <div className="name">Remote computer</div>
+            <div className="close" onClick={closeFrame}>
+              X
+            </div>
+          </div>
+          <iframe className="home-iframe" frameBorder="0" src={frameUrl} />
+        </div>
+      )}
+      {/* <div className="show-home-page-btn" onClick={openDialog}>
         L
-      </div>
+      </div> */}
     </>
   );
 }
